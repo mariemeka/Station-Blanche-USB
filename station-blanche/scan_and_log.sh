@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Ensure the USB directory is mounted
-USB_DIRECTORY="/scanned_files"
+USB_DIRECTORY="/mnt"
 if [ ! -d "$USB_DIRECTORY" ]; then
     echo "USB directory not found."
     exit 1
@@ -20,8 +20,3 @@ if [ $? -eq 0 ]; then
 else
     echo "USB keys may be infected. Scan results stored in $LOG_FILE."
 fi
-
-# Run your application or additional tasks if needed
-
-# Keep the container running
-tail -f /dev/null
