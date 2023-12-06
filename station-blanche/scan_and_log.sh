@@ -26,3 +26,6 @@ sudo find $USB_DIRECTORY -type f -exec sha256sum {} + | sha256sum | tr -d '-' >>
 
 # slow method (scans all the device)
 #sudo dd if=$USB_DIRECTORY bs=4M status=progress | sha256sum | tr -d '-' >> $LOG_FILE
+
+# unmount the usb device after scan
+sudo umount $USB_DIRECTORY
