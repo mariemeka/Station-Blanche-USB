@@ -3,7 +3,7 @@
 ACTION=$1
 DEVBASE=$2
 DEVICE="/dev/${DEVBASE}"
-MOUNT_POINT="/mnt/usb"
+MOUNT_POINT="/mnt"
 CHECK_MOUNT_POINT=$(mount | grep "${DEVICE}" | awk '{ print $3 }')
 DATE=$(date +"[%Y-%m-%d %H:%M:%S]")
 
@@ -26,13 +26,15 @@ mount_key() {
 
     # GLOBAL
     OPTS="rw,relatime"
-    TYPE="vfat"
+    # TYPE="vfat"
 
     # MOUNT
-    mount -t "${TYPE}" -o "${OPTS}" "${DEVICE}" "${MOUNT_POINT}"
+    #mount -t "${TYPE}" -o "${OPTS}" "${DEVICE}" "${MOUNT_POINT}"
+    sudo  mount -o "${OPTS}" "${DEVICE}" "${MOUNT_POINT}"
+
 
     # LOG ACTION
-    echo "$DATE [USB][Mount] USB key mounted in '/mnt/usb'" >> /home/user/logs/usb.log
+    echo "$DATE [USB][Mount] USB key mounted in '/mnt'" >> /home/pi/logs/usb.log
 }
 
 # UNMOUNT KEY
@@ -42,12 +44,12 @@ unmount_key() {
         umount -l "${MOUNT_POINT}"
 
         # LOG ACTION
-        echo "$DATE [USB][Unmount] USB key unmounted from '/mnt/usb'" >> /home/user/logs/usb.log
+        echo "$DATE [USB][Unmount] USB key unmounted from '/mnt'" >> /home/pi/logs/usb.log
     fi
 }
 
 # MAIN
-echo "$DATE [USB][Detect] USB key detected" >> /home/user/logs/usb.log
+echo "$DATE [USB][Detect] USB key detected" >> /home/pi/logs/usb.log
 
 case "${ACTION}" in
     add)
