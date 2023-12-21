@@ -1,0 +1,8 @@
+[Unit]
+Description=Automount USB Key
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/home/pi/stationBlanche/auto_mount.sh add %i
+ExecStop=/home/pi/stationBlanche/auto_mount.sh remove %i

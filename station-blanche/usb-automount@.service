@@ -1,9 +1,0 @@
-[Unit]
-Description=Automount USB Key
-
-[Service]
-Type=oneshot
-RemainAfterExit=true
-ExecStart=/home/user/usb-automount.sh add %i
-ExecStop=/home/user/usb-automount.sh remove %i
-
