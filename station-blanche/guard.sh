@@ -2,6 +2,9 @@
 
 # USB Control Script using USBGuard on Debian
 
+# usb device ID variable
+usb_device_id=$(usbguard list-devices | tail -n 1 | awk '{print $4}')
+
 # Function to allow a specific USB device
 allow_usb() {
     device_id=$1
@@ -17,6 +20,20 @@ block_usb() {
 # Function to list connected USB devices
 list_usb_devices() {
     usbguard list-devices
+}
+
+# Function to query a remote MySQL database
+query_remote_database() {
+    read -p "Enter MySQL host: " host
+    read -p "Enter MySQL port: " port
+    read -p "Enter MySQL username: " username
+    read -s -p "Enter MySQL password: " password
+    echo # Move to a new line after password input
+    read -p "Enter database name: " database
+    read -p "Enter SQL query: " ICI ON TAPE LA QUETE SQL QUI VERIFIE LE STATUS DE LA CLE en utilisant $usb_device_id
+
+    # Run the remote MySQL query
+    mysql -h "$host" -P "$port" -u "$username" -p"$password" -D "$database" -e "$sql_query"
 }
 
 # Main script
