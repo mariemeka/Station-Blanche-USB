@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fichier_css.css') }}">
+    <title>Tableau de bord Admin</title>
+</head>
+<body>
+   <header>
+        <h1>Station blanche USB</h1>
+    </header>
+
+    <main>
+        <div class="sidebar">
+            <button id="historyButton" onclick="fetchClesUsbData()">
+                <span class="icon">🔑</span> Historique des clés
+            </button>
+            <!-- Ajoutez une div pour contenir le tableau -->
+            <div id="historyTableContainer">
+                <table id="historyTable" class="bordered-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom de la clé</th>
+                            <th>Statut</th>
+                            <th>Date</th>
+                            <!-- Ajoutez d'autres colonnes si nécessaire -->
+                        </tr>
+                    </thead>
+                    <tbody id="historyTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="content">
+            <h2>
+                <span class="icon">🔑</span> Permission clés
+            </h2>
+            <div class="user-info">
+                <p>Utilisateur: <span id="userName">Clé de Clément</span></p>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="action-buttons">
+                <button class="action-button deny-button">Refuser</button>
+                <button class="action-button allow-button">Autoriser</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2023 Nom de votre site</p>
+    </footer>
+
+   <script>
+    function fetchClesUsbData() {
+    
+    	// Obtenez l'élément de la table par son ID
+            var historyTable = document.getElementById("historyTable");
+
+            // Alternez l'affichage entre "block" et "none"
+            historyTable.style.display = (historyTable.style.display === "none") ? "block" : "none";
+            
+        // Effectuez une requête AJAX vers la nouvelle route Flask
+        fetch('/get_cles_usb_data')
+            .then(response => response.json())
+            .then(data => {
+                // Mettez à jour dynamiquement le contenu de l'élément avec l'id 'historyTableBody'
+                const historyTableBody = document.getElementById("historyTableBody");
+                historyTableBody.innerHTML = "";  // Effacez le contenu précédent
+                data.forEach(entry => {
+                    const row = document.createElement("tr");
+                    // Ajoutez des cellules avec les données correspondantes
+                    const idCell = document.createElement("td");
+                    idCell.textContent = entry.id_cles;
+                    const nomCell = document.createElement("td");
+                    nomCell.textContent = entry.hash;  // Remplacez par le champ correct
+                    const statutCell = document.createElement("td");
+                    statutCell.textContent = entry.statut;
+                    const dateCell = document.createElement("td");
+                    dateCell.textContent = entry.date;
+                    // Ajoutez d'autres cellules si nécessaire
+                    // Ajoutez toutes les cellules à la ligne
+                    row.appendChild(idCell);
+                    row.appendChild(nomCell);
+                    row.appendChild(statutCell);
+                    row.appendChild(dateCell);
+                    // Ajoutez la ligne au corps du tableau
+                    historyTableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Erreur lors de la récupération des données :', error));
+    }
+   
+    
+
+    </script>
+</body>
+</html>
+

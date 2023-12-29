@@ -1,0 +1,163 @@
+h1 {
+            color: white;
+            font-weight: bold;
+            text-decoration: underline;
+            text-align: center;
+            font-size: 80px;
+        }
+
+        body {
+            background-image: url('depositphotos_196167538-stock-photo-business-concept-light-bulb-on.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        .user-button {
+            background-color: rgb(0, 153, 255);
+            color: white;
+            padding: 15px 20px;
+            font-size: 45px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 150px;
+            margin-right: 50px;
+            box-shadow: 2px 2px 2px black;
+        }
+
+        .admin-button {
+            background-color: rgb(45, 9, 145);
+            color: white;
+            padding: 15px 20px;
+            font-size: 45px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 150px;
+            box-shadow: 2px 2px 2px black;
+        }
+        .user-icon, .admin-icon {
+            margin-right: 8px;
+            
+        }
+        .bouton{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: cyan;
+            color: black;
+        }
+	.login-container {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+	.scan-button {
+            background-color: rgb(0, 153, 255);
+            color: white;
+            padding: 15px 20px;
+            font-size: 45px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 150px;
+        }
+        
+        .sidebar {
+            color: white;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+            margin-left: 400px;
+            margin-top: 15px;
+        }
+
+        .content {
+            flex-grow: 1;
+        
+            font-size: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+         .icon {
+            margin-right: 8px;
+            background-color: #333;
+        }
+
+	.action-button {
+            flex-grow: 1;
+            padding: 15px;
+            cursor: pointer;
+            border: none;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .deny-button,
+        .allow-button {
+            width: calc(50% - 5px); /* Ajustement de la largeur avec un espace de 5px entre les boutons */
+        }
+
+        .deny-button {
+            background-color: #FF0000; /* Rouge */
+        }
+
+        .allow-button {
+            background-color: #00FF00; /* Vert */
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            line-height: 2;
+        }
+
+        /* Nouveau style pour centrer les boutons */
+        main {
+            text-align: center;
+        }

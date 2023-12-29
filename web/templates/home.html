@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fichier_css.css') }}">
+
+      <title>Page de choix d'utilisation</title>
+   
+</head>
+<body>
+    <h1>Accueil</h1>
+     <main>
+     <form action="user" method="get">
+        <button type="submit" class="user-button">
+        <span class="user-icon">👤</span> Utilisateur
+        </button>
+    </form>
+    
+    <form action="admin" method="get">
+        <button type="submit"class="admin-button">
+            <span class="admin-icon" >👤</span> Administrateur
+        </button>
+    </form>
+     </main>
+     <footer>
+        <!-- Texte en bas de page -->
+        <p>© 2023 Nom de votre site - Texte en bas de page</p>
+    </footer>
+</body>
+</html>
+
+
+

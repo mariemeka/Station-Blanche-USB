@@ -1,0 +1,51 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fichier_css.css') }}">
+
+   <title>Page Utilisateur</title>
+       
+</head>
+<body>
+   <h1>Station blanche USB</h1>
+    
+     <main>
+    <!-- Bouton pour déclencher la numérisation -->
+    <button id="scanButton" class="scan-button">  <span class="shield-icon">🛡️</span> Scanner ma clé</button>
+   </main>
+   
+    <script>
+        // Script JavaScript pour déclencher la numérisation
+        document.getElementById('scanButton').addEventListener('click', function() {
+            // Faire une requête au serveur pour déclencher le script de numérisation
+            fetch('/trigger-scan', { method: 'POST' })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Échec de la requête');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Gérer la réponse du serveur si nécessaire
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                });
+        });
+    </script>
+    
+      
+ 
+
+    <footer>
+        <!-- Texte en bas de page -->
+        <p>© 2024 StationBlanche</p>
+    </footer>
+    
+    
+</body>
+</html>
