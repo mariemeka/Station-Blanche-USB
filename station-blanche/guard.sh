@@ -30,7 +30,7 @@ query_remote_database() {
     read -s -p "Enter MySQL password: " password
     echo # Move to a new line after password input
     read -p "Enter database name: " database
-    read -p "Enter SQL query: " ICI ON TAPE LA QUETE SQL QUI VERIFIE LE STATUS DE LA CLE en utilisant $usb_device_id
+    read -p "Enter SQL query: " ICI ON TAPE LA REQUETE SQL QUI VERIFIE LE STATUS DE LA CLE en utilisant $usb_device_id
 
     # Run the remote MySQL query
     mysql -h "$host" -P "$port" -u "$username" -p"$password" -D "$database" -e "$sql_query"
