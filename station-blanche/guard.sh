@@ -30,7 +30,8 @@ query_remote_database() {
     read -s -p "Enter MySQL password: " password
     echo # Move to a new line after password input
     read -p "Enter database name: " database
-    read -p "Enter SQL query: " ICI ON TAPE LA REQUETE SQL QUI VERIFIE LE STATUS DE LA CLE en utilisant $usb_device_id
+    # Requête SQL pour obtenir le statut de la clé basée sur $usb_device_id
+    sql_query="SELECT statut FROM cles_usb WHERE id_cles = '$usb_device_id';"
 
     # Run the remote MySQL query
     mysql -h "$host" -P "$port" -u "$username" -p"$password" -D "$database" -e "$sql_query"
@@ -55,8 +56,11 @@ case $action in
     "list")
         list_usb_devices
         ;;
+"query")  # Ajout de l'option pour la requête MySQL
+        query_remote_database
+        ;;
     *)
-        echo "Invalid action. Usage: $0 <allow/block/list> [device_id]"
+        echo "Invalid action. Usage: $0 <allow/block/list/query> [device_id]"
         exit 1
         ;;
 esac

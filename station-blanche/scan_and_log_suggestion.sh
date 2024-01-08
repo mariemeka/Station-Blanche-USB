@@ -1,19 +1,19 @@
 #!/bin/bash
 
 
-python_script_path="/home/marieme/Station-Blanche-USB/w/extraction_hash.py"
+python_script_path="/home/marieme/projet_stationblanche/Station-Blanche-USB/w/extraction_hash.py"
 
 # Emplacement du répertoire où la clé USB sera montée
 mount_point="/mnt"
 
 # Emplacement du fichier de résultats de la numérisation
-result_file="/home/marieme/Station-Blanche-USB/web/scanned_files/scan_results.txt"
+result_file="/home/marieme/projet_stationblanche/Station-Blanche-USB/web/scanned_files/scan_results.txt"
 
 # Emplacement du fichier d'informations sur la clé USB
-usb_info_file="/home/marieme/Station-Blanche-USB/web/usb_info.txt"
+usb_info_file="/home/marieme/projet_stationblanche/Station-Blanche-USB/web/usb_info.txt"
 
 # Emplacement du fichier de logs pour les erreurs
-log_file="/home/marieme/Station-Blanche-USB/web/error_logs.log"
+log_file="/home/marieme/projet_stationblanche/Station-Blanche-USB/web/error_logs.log"
 
 # Vérifier si le périphérique USB est connecté
 usb_device="/dev/sdc"
@@ -26,7 +26,8 @@ else
 fi
 
 # Obtenez l'identifiant unique du périphérique USB
-usb_id=$(udevadm info -q property -n "$usb_device" | grep ID_SERIAL_SHORT | cut -d "=" -f 2)
+# Obtenez l'identifiant unique du périphérique USB
+usb_id=$(usbguard list-devices | tail -n 1 | awk '{print $4}')
 
 if [ -b "$usb_device" ]; then
     # Calculer le hash global des fichiers sur la clé USB
@@ -70,6 +71,8 @@ if [ -b "$usb_device" ]; then
             # Sinon, mettez à jour le statut en NO_OK
             update_query="UPDATE cles_usb SET statut='NO_OK' WHERE id_cles='$usb_id';"
             mysql -u$mysql_user -p$mysql_pass $mysql_db -e "$update_query" 2>> "$log_file"
+            # Bloquer le périphérique USB en utilisant guard.sh
+            /home/marieme/projet_stationblanche/Station-Blanche-USB/station-blanche/guard.sh block $usb_id
         fi
     fi
 
