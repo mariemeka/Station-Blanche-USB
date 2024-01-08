@@ -5,6 +5,13 @@ h1 {
             text-align: center;
             font-size: 80px;
         }
+h1 .lien {
+            color: white;
+            font-weight: bold;
+            text-decoration: underline;
+            text-align: center;
+            font-size: 80px;
+        }
 
         body {
             background-image: url('depositphotos_196167538-stock-photo-business-concept-light-bulb-on.webp');
@@ -14,7 +21,10 @@ h1 {
             margin: 0;
             padding: 0;
         }
-
+        
+        .background{
+            background-color: #000;
+        }
         .user-button {
             background-color: rgb(0, 153, 255);
             color: white;
@@ -161,3 +171,4 @@ h1 {
         main {
             text-align: center;
         }
+
