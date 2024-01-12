@@ -16,9 +16,23 @@ usb_info_file="/home/marieme/projet_stationblanche/Station-Blanche-USB/web/usb_i
 log_file="/home/marieme/projet_stationblanche/Station-Blanche-USB/web/error_logs.log"
 
 # Vérifier si le périphérique USB est connecté
-usb_device="/dev/sdc"
+usb_device="/dev/sdd1"
 
 #echo "Début du script"
+
+# Charger les informations de configuration depuis le fichier config.ini
+config_file="config.ini"
+mysql_config_file="mysql_config.cnf"
+
+if [ -f "$config_file" ]; then
+    user=$(grep "user" "$config_file" | cut -d'=' -f2)
+    password=$(grep "password" "$config_file" | cut -d'=' -f2)
+    database=$(grep "database" "$config_file" | cut -d'=' -f2)
+else
+    echo "Erreur : le fichier config.ini n'a pas été trouvé."
+    exit 1
+fi
+
 if mount | grep "$mount_point"; then
     echo "Le périphérique est déjà monté."
 else
@@ -26,31 +40,29 @@ else
 fi
 
 # Obtenez l'identifiant unique du périphérique USB
-# Obtenez l'identifiant unique du périphérique USB
 usb_id=$(usbguard list-devices | tail -n 1 | awk '{print $4}')
 
 if [ -b "$usb_device" ]; then
     # Calculer le hash global des fichiers sur la clé USB
     full_hash=""
     for file in $(find "$mount_point" -type f); do
-        file_hash=$(sha256sum "$file" | awk '{print $1}')
-        full_hash="${full_hash}${file_hash}"
+        file_hash=$(sha256sum "$file" 2>/dev/null | awk '{print $1}')
+        if [ -n "$file_hash" ]; then
+            full_hash="${full_hash}${file_hash}"
+        fi
     done
-
+    
     
     combined_hash=$(echo -n "$full_hash" | sha256sum | awk '{print $1}')
-    mysql_user="root"
-    mysql_pass="root"
-    mysql_db="stationblanche"
-    
     # Vérifier si le hash existe déjà dans la base de données
-    existing_hash=$(mysql -u$mysql_user -p$mysql_pass $mysql_db -se "SELECT hash FROM cles_usb WHERE hash='$combined_hash';")
+    existing_hash=$(mysql --defaults-extra-file="$mysql_config_file" -e "SELECT hash FROM cles_usb WHERE hash='$combined_hash';" -s)
+
     if [ "$existing_hash" == "$combined_hash" ]; then
         echo "Le hash existe déjà dans la base de données. Aucune insertion nécessaire."
     else
         # Lancer la numérisation
-        echo "Starting ClamAV scan..."
-        clamscan -r "$mount_point" --stdout
+        echo "Starting ClamAV scan..." 
+        clamscan -r "$mount_point" --stdout >> "$result_file"
 
         # Vérifier le statut de la numérisation
         if [ $? -eq 0 ]; then
@@ -59,18 +71,18 @@ if [ -b "$usb_device" ]; then
 
             date_info=$(date +"%Y-%m-%d %H:%M:%S")
             insert_query="INSERT INTO cles_usb (id_cles, hash, statut, date) VALUES ('$usb_id', '$combined_hash', 'pending', '$date_info');"
-            mysql -u$mysql_user -p$mysql_pass $mysql_db -e "$insert_query" 2>> "$log_file"
+            mysql -u $user -p"$password" $database -e "$insert_query" 2>> "$log_file"
 
             formatted_usb_info="$combined_hash, 'pending', '$date_info'"
             #echo "$formatted_usb_info" >> "$usb_info_file"
 
             # Mettre à jour le statut dans la base de données si la numérisation est réussie
             update_query="UPDATE cles_usb SET statut='OK' WHERE id_cles='$usb_id';"
-            mysql -u$mysql_user -p$mysql_pass $mysql_db -e "$update_query" 2>> "$log_file"
+            mysql -u $user -p"$password" $database -e "$update_query" 2>> "$log_file"
         else
             # Sinon, mettez à jour le statut en NO_OK
             update_query="UPDATE cles_usb SET statut='NO_OK' WHERE id_cles='$usb_id';"
-            mysql -u$mysql_user -p$mysql_pass $mysql_db -e "$update_query" 2>> "$log_file"
+            mysql -u $user -p"$password" $database -e "$update_query" 2>> "$log_file"
             # Bloquer le périphérique USB en utilisant guard.sh
             /home/marieme/projet_stationblanche/Station-Blanche-USB/station-blanche/guard.sh block $usb_id
         fi
