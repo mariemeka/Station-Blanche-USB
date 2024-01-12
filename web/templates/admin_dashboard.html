@@ -16,11 +16,12 @@
         <div class="sidebar">
             <button id="historyButton" onclick="fetchClesUsbData()">
                 <span class="icon">🔑</span> Historique des clés
+         
             </button>
             <!-- Ajoutez une div pour contenir le tableau -->
             <div id="historyTableContainer" class="background">
                 <table id="historyTable" class="bordered-table">
-                    <thead>
+                    <thead class="menu_tab">
                         <tr>
                             <th>ID</th>
                             <th>Nom de la clé</th>
@@ -33,24 +34,11 @@
                 </table>
             </div>
         </div>
-        <div class="content">
-            <h2>
-                <span class="icon">🔑</span> Permission clés
-            </h2>
-            <div class="user-info">
-                <p>Utilisateur: <span id="userName">Clé de Clément</span></p>
-            </div>
-
-            <!-- Boutons d'action -->
-            <div class="action-buttons">
-                <button class="action-button deny-button">Refuser</button>
-                <button class="action-button allow-button">Autoriser</button>
-            </div>
-        </div>
+       
     </main>
 
     <footer>
-        <p>© 2023 Nom de votre site</p>
+        <p>© 2024 StationBlanche</p>
     </footer>
 
    <script>
