@@ -69,3 +69,94 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 mysql: [Warning] Using a password on the command line interface can be insecure.
 mysql: [Warning] Using a password on the command line interface can be insecure.
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1046 (3D000) at line 1: No database selected
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1046 (3D000) at line 1: No database selected
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1046 (3D000) at line 1: No database selected
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1046 (3D000) at line 1: No database selected
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1046 (3D000) at line 1: No database selected
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1046 (3D000) at line 1: No database selected
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1046 (3D000) at line 1: No database selected
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1046 (3D000) at line 1: No database selected
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1062 (23000) at line 1: Duplicate entry '778ca2edec38271b7c70fa7adfdc3bfc3686916ee7e4518a444dd887d0c66eb3' for key 'cles_usb.PRIMARY'
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1062 (23000) at line 1: Duplicate entry 'de337a0df2f31dc20e22d6223d20dd3b197b1a2498ffbe3beb1ca50adf34b17e' for key 'cles_usb.PRIMARY'
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1062 (23000) at line 1: Duplicate entry 'de337a0df2f31dc20e22d6223d20dd3b197b1a2498ffbe3beb1ca50adf34b17e' for key 'cles_usb.PRIMARY'
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Le hash existe déjà dans la base de données. Aucune insertion nécessaire.
+Starting ClamAV scan...
+/mnt/System Volume Information/IndexerVolumeGuid: OK
+/mnt/System Volume Information/WPSettings.dat: OK
+/mnt/file_un: OK
+/mnt/file_deux: OK
+/mnt/file_trois: Empty file
+/mnt/no.txt: Empty file
+
+----------- SCAN SUMMARY -----------
+Known viruses: 8682374
+Engine version: 0.103.11
+Scanned directories: 3
+Scanned files: 4
+Infected files: 0
+Data scanned: 0.00 MB
+Data read: 0.00 MB (ratio 0.00:1)
+Time: 19.623 sec (0 m 19 s)
+Start Date: 2024:01:12 22:16:23
+End Date:   2024:01:12 22:16:43
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Le hash existe déjà dans la base de données. Aucune insertion nécessaire.
+Starting ClamAV scan...
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Starting ClamAV scan...
+/mnt/System Volume Information/IndexerVolumeGuid: OK
+/mnt/System Volume Information/WPSettings.dat: OK
+/mnt/file_un: OK
+/mnt/file_deux: OK
+/mnt/file_trois: Empty file
+/mnt/no.txt: Empty file
+/mnt/nou.txt: Empty file
+
+----------- SCAN SUMMARY -----------
+Known viruses: 8682374
+Engine version: 0.103.11
+Scanned directories: 3
+Scanned files: 4
+Infected files: 0
+Data scanned: 0.00 MB
+Data read: 0.00 MB (ratio 0.00:1)
+Time: 19.152 sec (0 m 19 s)
+Start Date: 2024:01:12 22:28:42
+End Date:   2024:01:12 22:29:01
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.

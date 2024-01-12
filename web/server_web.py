@@ -11,16 +11,23 @@ import pymysql
 import hashlib
 import webbrowser
 import logging
+import configparser
 
 # Paramètres de connexion à la base de données MySQL
+# Chargez les informations de configuration depuis le fichier config.ini
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+# Mettez à jour les informations de connexion à la base de données
 db_config = {
     'host': 'localhost',
-    'user': 'root',
-    'password': 'root',
-    'db': 'stationblanche',
+    'user': config.get('mysql', 'user'),
+    'password': config.get('mysql', 'password'),
+    'db': config.get('mysql', 'database'),
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor
 }
+
 
 app = Flask(__name__)
 
@@ -125,8 +132,14 @@ def trigger_scan():
                 cursor.execute(sql)
                 result = cursor.fetchone()
                 if result:
+                    # Après l'analyse, appel du script post_analyse.sh avec le statut
+                    post_analyse_script = '/home/marieme/projet_stationblanche/Station-Blanche-USB/web/post_analyse.sh'
+                    subprocess.run([post_analyse_script, 'OK'])
                     webbrowser.open('/home/marieme/projet_stationblanche/Station-Blanche-USB/web/templates/accepter.html')
                 else:
+                    # Après l'analyse, appel du script post_analyse.sh avec le statut
+                    post_analyse_script = '/home/marieme/projet_stationblanche/Station-Blanche-USB/web/post_analyse.sh'
+                    subprocess.run([post_analyse_script, 'NO_OK'])
                     webbrowser.open('/home/marieme/projet_stationblanche/Station-Blanche-USB/web/templates/refuser.html')    
         finally:
             connection.close()

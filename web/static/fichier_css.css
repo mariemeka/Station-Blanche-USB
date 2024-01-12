@@ -22,6 +22,15 @@ h1 .lien {
             padding: 0;
         }
         
+        table, tbody{
+                	 background-color: black;
+        }
+        
+        .menu_tab{
+                	 color: black;
+        }
+        
+        
         .background{
             background-color: #000;
         }
@@ -140,6 +149,7 @@ h1 .lien {
         table {
             border-collapse: collapse;
             width: 100%;
+            
         }
 
         th, td {
