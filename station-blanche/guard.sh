@@ -1,3 +1,5 @@
+## Par défaut, nous avons mis ce script sur /home/user ##
+
 #!/bin/bash
 
 # USB device ID variable
