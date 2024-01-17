@@ -1,3 +1,5 @@
+## libre à vous de choisir l'emplacement, cependant il faudra mettre à jour le fichier 'server_web.py' ##
+
 #!/bin/bash
 
 
